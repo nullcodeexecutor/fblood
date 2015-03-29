@@ -9,16 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fblood-config</artifactId>
+    <artifactId>fblood-protocol</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
+            <artifactId>spring-remoting</artifactId>
+            <version>1.2.7</version>
         </dependency>
     </dependencies>
-
 
 </project>
