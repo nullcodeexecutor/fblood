@@ -1,6 +1,8 @@
 package org.fblood.config.bean;
 
 import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 /**
  * Created by yuantao on 2015/3/29.
