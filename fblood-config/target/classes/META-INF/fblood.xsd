@@ -59,6 +59,24 @@
                 <xsd:documentation><![CDATA[ The service port. ]]></xsd:documentation>
             </xsd:annotation>
         </xsd:attribute>
+        <xsd:attribute name="zookeeper" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The zookeeper ref. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="remoteInjectType">
+        <xsd:attribute name="app" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The app Id. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="zookeeper" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The zookeeper ref. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
     </xsd:complexType>
 
     <xsd:element name="application" type="appType">
@@ -79,5 +97,10 @@
         </xsd:annotation>
     </xsd:element>
 
+    <xsd:element name="remoteInject" type="remoteInjectType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[ Export service config eg: <loom:service proxy="com.zhe800.order.xxxx" api="com.zhe800.order.xxx.Api" version="1.0" owner="panda" registry="zk01"/> ]]></xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
 
 </xsd:schema>
