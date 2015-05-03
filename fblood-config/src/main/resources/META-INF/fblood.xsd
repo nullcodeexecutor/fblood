@@ -18,9 +18,14 @@
                 <xsd:documentation><![CDATA[ The unique identifier for a app. ]]></xsd:documentation>
             </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="protocol" type="xsd:string" default="org.fblood.protocol.rmi.RmiProtocol">
+        <xsd:attribute name="protocol" type="xsd:string" default="org.fblood.protocol.rmi.RMIProtocol">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[ f ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="zookeeper" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ The zookeeper ref. ]]></xsd:documentation>
             </xsd:annotation>
         </xsd:attribute>
     </xsd:complexType>
@@ -62,11 +67,6 @@
         <xsd:attribute name="port" type="xsd:string" use="required">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[ The service port. ]]></xsd:documentation>
-            </xsd:annotation>
-        </xsd:attribute>
-        <xsd:attribute name="zookeeper" type="xsd:string" use="required">
-            <xsd:annotation>
-                <xsd:documentation><![CDATA[ The zookeeper ref. ]]></xsd:documentation>
             </xsd:annotation>
         </xsd:attribute>
     </xsd:complexType>

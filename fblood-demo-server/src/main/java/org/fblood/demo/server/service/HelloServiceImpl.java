@@ -1,4 +1,4 @@
-package org.fblood.protocol.service;
+package org.fblood.demo.server.service;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -6,8 +6,8 @@ import java.rmi.server.UnicastRemoteObject;
 /**
  * Created by coder on 15/5/1.
  */
-public class RemoteServiceImpl extends UnicastRemoteObject implements RemoteService {
-    public RemoteServiceImpl() throws RemoteException {
+public class HelloServiceImpl extends UnicastRemoteObject implements HelloService {
+    public HelloServiceImpl() throws RemoteException {
         super();
     }
 

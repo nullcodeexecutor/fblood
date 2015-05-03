@@ -13,6 +13,7 @@ public class RMIProtocol implements Protocol {
     private int port;
     private String host;
 
+
     @Override
     public void publishService(Object service, String serviceName) throws Exception{
         Registry registry = LocateRegistry.createRegistry(this.port);

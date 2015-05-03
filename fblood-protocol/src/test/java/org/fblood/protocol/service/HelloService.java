@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 /**
  * Created by coder on 15/5/1.
  */
-public interface RemoteService extends Remote {
+public interface HelloService extends Remote {
 
     String sayHello(String name) throws RemoteException;
 

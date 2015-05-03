@@ -1,4 +1,4 @@
-package org.fblood.protocol.service;
+package org.fblood.demo.server.service;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 /**
  * Created by coder on 15/5/1.
  */
-public interface RemoteService extends Remote {
+public interface HelloService extends Remote {
 
     String sayHello(String name) throws RemoteException;
 

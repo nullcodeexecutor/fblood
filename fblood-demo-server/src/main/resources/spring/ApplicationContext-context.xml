@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:fblood="http://fblood.org/schema/fblood"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://fblood.org/schema/fblood http://fblood.org/schema/fblood/fblood.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+    <!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
+    <context:annotation-config />
+    <context:component-scan base-package="org.coder"/>
+
+    <!--<bean id="defaultRuralConfig" class="org.rural.config.DefaultRuralConfig"/>-->
+    <fblood:zookeeper id="zk" address="jjj"/>
+
+    <fblood:application id="fbloodTestApp" zookeeper="zk"/>
+
+
+
+    <bean id="helloService" class="org.fblood.demo.server.service.HelloServiceImpl"/>
+
+    <fblood:provider id="fbloodHelloService" app="fbloodTestApp" ref="helloService" port="9968"/>
+
+
+</beans>
