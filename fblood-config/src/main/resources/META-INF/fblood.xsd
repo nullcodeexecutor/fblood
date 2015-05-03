@@ -15,7 +15,12 @@
     <xsd:complexType name="appType">
         <xsd:attribute name="id" type="xsd:ID">
             <xsd:annotation>
-                <xsd:documentation><![CDATA[ The unique identifier for a bean. ]]></xsd:documentation>
+                <xsd:documentation><![CDATA[ The unique identifier for a app. ]]></xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="protocol" type="xsd:string" default="org.fblood.protocol.rmi.RmiProtocol">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[ f ]]></xsd:documentation>
             </xsd:annotation>
         </xsd:attribute>
     </xsd:complexType>
@@ -81,25 +86,25 @@
 
     <xsd:element name="application" type="appType">
         <xsd:annotation>
-            <xsd:documentation><![CDATA[ The application config eg: <loom:application name="product-serv" /> ]]></xsd:documentation>
+            <xsd:documentation><![CDATA[ The application config eg: <fblood:application name="product-serv" /> ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
 
     <xsd:element name="zookeeper" type="zookeeperType">
         <xsd:annotation>
-            <xsd:documentation><![CDATA[ The registry config eg: <loom:registry id="zk01" protocol="zookeeper" address="xxx,xxx,xxx" timeout="20000"/> ]]></xsd:documentation>
+            <xsd:documentation><![CDATA[ The registry config eg: <fblood:registry id="zk01" protocol="zookeeper" address="xxx,xxx,xxx" timeout="20000"/> ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
 
     <xsd:element name="provider" type="providerType">
         <xsd:annotation>
-            <xsd:documentation><![CDATA[ Export service config eg: <loom:service proxy="com.zhe800.order.xxxx" api="com.zhe800.order.xxx.Api" version="1.0" owner="panda" registry="zk01"/> ]]></xsd:documentation>
+            <xsd:documentation><![CDATA[ Export service config eg: <fblood:service version="1.0" owner="panda" registry="zk01"/> ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
 
     <xsd:element name="remoteInject" type="remoteInjectType">
         <xsd:annotation>
-            <xsd:documentation><![CDATA[ Export service config eg: <loom:service proxy="com.zhe800.order.xxxx" api="com.zhe800.order.xxx.Api" version="1.0" owner="panda" registry="zk01"/> ]]></xsd:documentation>
+            <xsd:documentation><![CDATA[ Export service config eg: <fblood:service owner="panda" registry="zk01"/> ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
 

@@ -12,8 +12,14 @@ public class ApplicationBean implements ApplicationContextAware {
 
     private String application;
 
+    private String protocol;
+
     public String getApplication() {
         return application;
+    }
+
+    public void setProtocol(String protocol) {
+        this.protocol = protocol;
     }
 
     public void setApplication(String application) {
