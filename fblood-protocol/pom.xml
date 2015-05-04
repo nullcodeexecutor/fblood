@@ -12,6 +12,14 @@
     <artifactId>fblood-protocol</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.fblood</groupId>
+            <artifactId>fblood-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-remoting</artifactId>

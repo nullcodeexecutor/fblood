@@ -7,7 +7,7 @@ public class Provider {
     private String appName;
     private String serviceName;
     private String host;
-    private String port;
+    private int port;
 
     public String getAppName() {
         return appName;
@@ -33,11 +33,11 @@ public class Provider {
         this.host = host;
     }
 
-    public String getPort() {
+    public int getPort() {
         return port;
     }
 
-    public void setPort(String port) {
+    public void setPort(int port) {
         this.port = port;
     }
 }

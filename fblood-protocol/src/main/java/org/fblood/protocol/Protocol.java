@@ -1,15 +1,15 @@
 package org.fblood.protocol;
 
-import java.rmi.Remote;
+import org.fblood.model.Provider;
 
 /**
  * Created by coder on 15/5/1.
  */
 public interface Protocol {
 
-    void publishService(Object service, String serviceName) throws Exception;
+    void publishService(Provider provider, Object service) throws Exception;
 
-    Object getService(String serviceName) throws Exception;
+    Object getService(Provider provider) throws Exception;
 
 
 }

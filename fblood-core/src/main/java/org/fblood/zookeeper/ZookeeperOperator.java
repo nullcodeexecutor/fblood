@@ -1,5 +1,6 @@
 package org.fblood.zookeeper;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.zookeeper.*;
 import org.fblood.model.Provider;
 
@@ -22,7 +23,26 @@ public class ZookeeperOperator {
         }
     }
 
+    public static void registryApp(ZooKeeper zooKeeper, String app) {
+        try {
+            zooKeeper.create(root + "/" + app, app.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        } catch (KeeperException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
+        }
+    }
+
     public static void registryProvider(ZooKeeper zooKeeper, Provider provider) {
+        try {
+            zooKeeper.create(root + "/" + provider.getAppName() + "/" + provider.getServiceName(), JSON.toJSONString(provider).getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        } catch (KeeperException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
+        }
     }
 
     public static void registryConsumer(ZooKeeper zooKeeper, Watcher watcher) {

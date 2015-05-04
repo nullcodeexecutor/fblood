@@ -14,9 +14,9 @@
     <context:component-scan base-package="org.coder"/>
 
     <!--<bean id="defaultRuralConfig" class="org.rural.config.DefaultRuralConfig"/>-->
-    <fblood:zookeeper id="zk" address="jjj"/>
+    <fblood:zookeeper id="zk" address="192.168.30.110:2181"/>
 
-    <fblood:application id="fbloodTestApp" zookeeper="zk"/>
+    <fblood:application id="fbloodTestApp" zookeeper="192.168.30.110:2181"/>
 
 
 

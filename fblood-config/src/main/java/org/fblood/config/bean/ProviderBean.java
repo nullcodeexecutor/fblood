@@ -1,9 +1,15 @@
 package org.fblood.config.bean;
 
+import org.apache.zookeeper.ZooKeeper;
+import org.fblood.model.Provider;
 import org.fblood.protocol.Protocol;
 import org.fblood.protocol.ProtocolFactory;
 import org.fblood.protocol.rmi.RMIProtocol;
+import org.fblood.zookeeper.ZookeeperConnector;
+import org.fblood.zookeeper.ZookeeperOperator;
 import org.springframework.beans.factory.InitializingBean;
+
+import java.net.InetAddress;
 
 /**
  * Created by coder on 15/5/1.
@@ -19,13 +25,20 @@ public class ProviderBean implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         ApplicationBean applicationBean = FBloodContextHolder.getApplicationBean();
         Protocol protocol = ProtocolFactory.getProtocol(applicationBean.getProtocol());
-        RMIProtocol rmiProtocol = (RMIProtocol)protocol;
-        rmiProtocol.setPort(this.port);
 
         Object service = FBloodContextHolder.getApplicationContext().getBean(this.ref);
 
-        String path = applicationBean.getApplication() + "/" + this.id;
-        protocol.publishService(service, path);
+        InetAddress addr = InetAddress.getLocalHost();
+
+        Provider provider = new Provider();
+        provider.setHost(addr.getHostAddress());
+        provider.setAppName(applicationBean.getApplication());
+        provider.setPort(this.port);
+        provider.setServiceName(this.id);
+
+        protocol.publishService(provider, service);
+
+        ZookeeperOperator.registryProvider(FBloodContextHolder.getZk(), provider);
     }
 
     public String getId() {
