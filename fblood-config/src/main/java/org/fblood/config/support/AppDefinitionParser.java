@@ -16,7 +16,7 @@ public class AppDefinitionParser implements BeanDefinitionParser {
     @Override
     public BeanDefinition parse(Element element, ParserContext parserContext) {
         String application = element.getAttribute("id");
-        String zk = element.getAttribute("zookeeper");
+        String zk = element.getAttribute("zk");
         String protocol = element.getAttribute("protocol");
 
         BeanDefinition beanDefinition = new RootBeanDefinition();

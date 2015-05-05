@@ -9,20 +9,19 @@
        http://fblood.org/schema/fblood http://fblood.org/schema/fblood/fblood.xsd
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-    <!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
     <context:annotation-config />
-    <context:component-scan base-package="org.coder"/>
 
-    <!--<bean id="defaultRuralConfig" class="org.rural.config.DefaultRuralConfig"/>-->
-    <fblood:zookeeper id="zk" address="192.168.30.110:2181"/>
+    <fblood:zookeeper id="fbloodZk" address="192.168.30.110:2181"/>
 
-    <fblood:application id="fbloodTestApp" zookeeper="192.168.30.110:2181"/>
+    <fblood:application id="fbloodTestApp" zk="fbloodZk"/>
 
 
 
     <bean id="helloService" class="org.fblood.demo.server.service.HelloServiceImpl"/>
+    <bean id="userService" class="org.fblood.demo.server.service.UserServiceImpl"/>
 
     <fblood:provider id="fbloodHelloService" app="fbloodTestApp" ref="helloService" port="9968"/>
+    <fblood:provider id="fbloodUserService" app="fbloodTestApp" ref="userService" port="9969"/>
 
 
 </beans>

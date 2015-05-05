@@ -2,6 +2,7 @@ package org.fblood.zookeeper;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.zookeeper.*;
+import org.apache.zookeeper.data.Stat;
 import org.fblood.model.Provider;
 
 /**
@@ -25,7 +26,10 @@ public class ZookeeperOperator {
 
     public static void registryApp(ZooKeeper zooKeeper, String app) {
         try {
-            zooKeeper.create(root + "/" + app, app.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+            String appPath = root + "/" + app;
+            if (null == zooKeeper.exists(appPath, false)) {
+                zooKeeper.create(appPath, app.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+            }
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -36,7 +40,16 @@ public class ZookeeperOperator {
 
     public static void registryProvider(ZooKeeper zooKeeper, Provider provider) {
         try {
-            zooKeeper.create(root + "/" + provider.getAppName() + "/" + provider.getServiceName(), JSON.toJSONString(provider).getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+            String servicePath = root + "/" + provider.getAppName() + "/" + provider.getServiceName();
+            String providerPath = servicePath + "/" + provider.getHost() + "_" + provider.getPort();
+            if (null == zooKeeper.exists(servicePath, false)) {
+                zooKeeper.create(servicePath, "".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+            }
+            Stat stat = zooKeeper.exists(providerPath, false);
+            if (null != stat) {
+                zooKeeper.delete(providerPath, stat.getVersion());
+            }
+            zooKeeper.create(providerPath, JSON.toJSONString(provider).getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

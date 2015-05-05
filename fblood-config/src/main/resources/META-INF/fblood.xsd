@@ -23,7 +23,7 @@
                 <xsd:documentation><![CDATA[ f ]]></xsd:documentation>
             </xsd:annotation>
         </xsd:attribute>
-        <xsd:attribute name="zookeeper" type="xsd:string" use="required">
+        <xsd:attribute name="zk" type="xsd:string" use="required">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[ The zookeeper ref. ]]></xsd:documentation>
             </xsd:annotation>
@@ -90,13 +90,11 @@
         </xsd:annotation>
     </xsd:element>
 
-    <!--
     <xsd:element name="zookeeper" type="zookeeperType">
         <xsd:annotation>
             <xsd:documentation><![CDATA[ The registry config eg: <fblood:registry id="zk01" protocol="zookeeper" address="xxx,xxx,xxx" timeout="20000"/> ]]></xsd:documentation>
         </xsd:annotation>
     </xsd:element>
-    -->
 
     <xsd:element name="provider" type="providerType">
         <xsd:annotation>

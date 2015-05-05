@@ -9,6 +9,7 @@ public class FBloodNamespaceHandler extends NamespaceHandlerSupport {
 
     @Override
     public void init() {
+        registerBeanDefinitionParser("zookeeper", new ZookeeperDefinitionParser());
         registerBeanDefinitionParser("application", new AppDefinitionParser());
         registerBeanDefinitionParser("provider", new ProviderDefinitionParser());
         registerBeanDefinitionParser("remoteInject", new ProviderDefinitionParser());

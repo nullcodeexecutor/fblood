@@ -54,7 +54,8 @@ public class ApplicationBean implements ApplicationContextAware, InitializingBea
     @Override
     public void afterPropertiesSet() throws Exception {
         FBloodContextHolder.setApplicationBean(this);
-        ZooKeeper zooKeeper = new ZookeeperConnector().connect(this.zk, 2000);
+        ZookeeperBean zookeeperBean = (ZookeeperBean)FBloodContextHolder.getApplicationContext().getBean(this.zk);
+        ZooKeeper zooKeeper = new ZookeeperConnector().connect(zookeeperBean.getAddress(), zookeeperBean.getTimeout());
         ZookeeperOperator.initContext(zooKeeper);
         ZookeeperOperator.registryApp(zooKeeper, this.application);
         FBloodContextHolder.setZk(zooKeeper);
