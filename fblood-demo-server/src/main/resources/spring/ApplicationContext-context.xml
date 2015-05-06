@@ -20,8 +20,8 @@
     <bean id="helloService" class="org.fblood.demo.server.service.HelloServiceImpl"/>
     <bean id="userService" class="org.fblood.demo.server.service.UserServiceImpl"/>
 
-    <fblood:provider id="fbloodHelloService" app="fbloodTestApp" ref="helloService" port="9968"/>
-    <fblood:provider id="fbloodUserService" app="fbloodTestApp" ref="userService" port="9969"/>
+    <fblood:provider app="fbloodTestApp" ref="helloService" port="9968"/>
+    <fblood:provider id="userService" app="fbloodTestApp" ref="userService" port="9969"/>
 
 
 </beans>

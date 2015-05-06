@@ -1,5 +1,6 @@
 package org.fblood.config.support;
 
+import org.apache.commons.lang.StringUtils;
 import org.fblood.config.bean.ProviderBean;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.RootBeanDefinition;
@@ -19,6 +20,10 @@ public class ProviderDefinitionParser implements BeanDefinitionParser {
         String ref = element.getAttribute("ref");
         int port = Integer.parseInt(element.getAttribute("port"));
 
+        if (StringUtils.isBlank(id)) {
+            id = ref;
+        }
+
         BeanDefinition beanDefinition = new RootBeanDefinition();
         beanDefinition.setBeanClassName(ProviderBean.class.getName());
         beanDefinition.getPropertyValues().add("id", id);
@@ -26,8 +31,7 @@ public class ProviderDefinitionParser implements BeanDefinitionParser {
         beanDefinition.getPropertyValues().add("ref", ref);
         beanDefinition.getPropertyValues().add("port", port);
 
-
-        parserContext.getRegistry().registerBeanDefinition(id, beanDefinition);
+        parserContext.getRegistry().registerBeanDefinition(app + "-" + id, beanDefinition);
 
         return beanDefinition;
     }

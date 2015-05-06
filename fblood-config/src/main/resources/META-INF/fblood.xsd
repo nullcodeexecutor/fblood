@@ -49,7 +49,7 @@
     </xsd:complexType>
 
     <xsd:complexType name="providerType">
-        <xsd:attribute name="id" type="xsd:ID">
+        <xsd:attribute name="id" type="xsd:string" use="optional">
             <xsd:annotation>
                 <xsd:documentation><![CDATA[ The unique identifier for a bean. ]]></xsd:documentation>
             </xsd:annotation>

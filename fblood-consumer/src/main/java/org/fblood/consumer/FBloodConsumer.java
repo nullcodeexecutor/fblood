@@ -6,8 +6,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 /**
  * Created by yuantao on 2015/3/29.
  */
-public class RemoteInjectBeanPostProcessor implements BeanPostProcessor {
-    private String zk;
+public class FBloodConsumer implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(Object o, String s) throws BeansException {
