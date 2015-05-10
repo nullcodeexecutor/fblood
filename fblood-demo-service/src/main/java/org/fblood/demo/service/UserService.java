@@ -1,4 +1,4 @@
-package org.fblood.demo.server.service;
+package org.fblood.demo.service;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

@@ -1,5 +1,7 @@
 package org.fblood.demo.server.service;
 
+import org.fblood.demo.service.HelloService;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 

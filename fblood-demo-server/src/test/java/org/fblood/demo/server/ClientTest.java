@@ -1,6 +1,6 @@
 package org.fblood.demo.server;
 
-import org.fblood.demo.server.service.HelloService;
+import org.fblood.demo.service.HelloService;
 import org.fblood.model.Provider;
 import org.fblood.protocol.ProtocolFactory;
 import org.fblood.protocol.rmi.RMIProtocol;
