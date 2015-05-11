@@ -5,6 +5,9 @@ import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 import org.fblood.model.Provider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by yuantao on 2015/4/11.
  */
@@ -36,6 +39,24 @@ public class ZookeeperOperator {
             e.printStackTrace();
             Thread.currentThread().interrupt();
         }
+    }
+
+    public static List<Provider> findProvider(ZooKeeper zookeeper, String appName, String serviceName) {
+        String path = root + "/" + appName + "/" + serviceName;
+        List<Provider> providers = new ArrayList<Provider>();
+        try {
+            List<String> children = zookeeper.getChildren(path, null);
+            for (String childPath : children) {
+                byte[] data = zookeeper.getData(childPath, true, null);
+                Provider provider = JSON.parseObject(new String(data), Provider.class);
+                providers.add(provider);
+            }
+        } catch (KeeperException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return providers;
     }
 
     public static void registryProvider(ZooKeeper zooKeeper, Provider provider) {
