@@ -47,7 +47,7 @@ public class ZookeeperOperator {
         try {
             List<String> children = zookeeper.getChildren(path, null);
             for (String childPath : children) {
-                byte[] data = zookeeper.getData(childPath, true, null);
+                byte[] data = zookeeper.getData(path + "/" + childPath, true, null);
                 Provider provider = JSON.parseObject(new String(data), Provider.class);
                 providers.add(provider);
             }

@@ -3,8 +3,11 @@ package org.fblood.consumer;
 import org.apache.commons.lang.StringUtils;
 import org.fblood.config.bean.ApplicationBean;
 import org.fblood.consumer.annotation.RemoteInject;
+import org.fblood.consumer.proxy.ConsumerHandler;
+import org.fblood.consumer.proxy.ProxyUtil;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
 
@@ -31,8 +34,9 @@ public class FBloodConsumer implements BeanPostProcessor {
             if (StringUtils.isBlank(serviceName)) {
                 serviceName = firstLetterToLowerCase(field.getName());
             }
-            String remoteServiceName = app.getApplication() + "-" + serviceName;
-            System.out.println(remoteServiceName);
+            Object proxy = ProxyUtil.getProxy(field.getType(), app.getApplication(), serviceName);
+            ReflectionUtils.makeAccessible(field);
+            ReflectionUtils.setField(field, o, proxy);
         }
         return o;
     }

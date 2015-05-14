@@ -1,5 +1,7 @@
 package org.fblood.demo.client;
 
+import org.fblood.demo.client.controller.UserController;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -8,7 +10,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ClientBootstrap {
 
     public static void main(String[] args) {
-        new ClassPathXmlApplicationContext("classpath:/spring/*.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/spring/*.xml");
+        UserController controller = context.getBean(UserController.class);
+        controller.save("wangyuantao");
+        controller.hello("world");
     }
 
 
