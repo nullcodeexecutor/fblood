@@ -13,6 +13,9 @@ import java.rmi.RemoteException;
 @Controller
 public class UserController {
 
+    /**
+     * 默认名字是该接口名首字母小写
+     */
     @RemoteInject
     private UserService userService;
 

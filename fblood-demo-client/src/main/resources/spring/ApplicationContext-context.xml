@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:fblood="http://fblood.org/schema/fblood"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://fblood.org/schema/fblood http://fblood.org/schema/fblood/fblood.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+       http://fblood.org/schema/fblood http://fblood.org/schema/fblood/fblood.xsd">
 
     <context:annotation-config />
 
     <context:component-scan base-package="org.fblood.demo.client.controller"/>
 
     <fblood:zookeeper id="fbloodZk" address="192.168.30.110:2181"/>
-
+    <!-- application id必须和服务提供方相同 -->
     <fblood:application id="fbloodTestApp" zk="fbloodZk"/>
 
-
+    <!-- 开启通过注解自动注入消费者service功能 -->
     <bean id="fbloodConsumer" class="org.fblood.consumer.FBloodConsumer">
         <property name="app" ref="fbloodTestApp"/>
     </bean>
