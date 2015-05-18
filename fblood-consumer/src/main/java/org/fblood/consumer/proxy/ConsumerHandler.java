@@ -1,13 +1,12 @@
 package org.fblood.consumer.proxy;
 
-import org.apache.zookeeper.ZooKeeper;
 import org.fblood.config.bean.FBloodContextHolder;
+import org.fblood.consumer.ProviderHolder;
 import org.fblood.consumer.balance.LoadBalance;
 import org.fblood.consumer.balance.RandomLoadBalance;
 import org.fblood.model.Provider;
 import org.fblood.protocol.Protocol;
 import org.fblood.protocol.ProtocolFactory;
-import org.fblood.zookeeper.ZookeeperOperator;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -29,8 +28,7 @@ public class ConsumerHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        ZooKeeper zooKeeper = FBloodContextHolder.getZk();
-        List<Provider> providerList = ZookeeperOperator.findProvider(zooKeeper, appName, serviceName);
+        List<Provider> providerList = ProviderHolder.findProvider(appName, serviceName);
         Provider provider = loadBalance.balance(providerList);
 
         Protocol protocol = ProtocolFactory.getProtocol(FBloodContextHolder.getApplicationBean().getProtocol());

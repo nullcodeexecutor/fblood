@@ -41,11 +41,11 @@ public class ZookeeperOperator {
         }
     }
 
-    public static List<Provider> findProvider(ZooKeeper zookeeper, String appName, String serviceName) {
+    public static List<Provider> findProvider(ZooKeeper zookeeper, String appName, String serviceName, Watcher watcher) {
         String path = root + "/" + appName + "/" + serviceName;
         List<Provider> providers = new ArrayList<Provider>();
         try {
-            List<String> children = zookeeper.getChildren(path, null);
+            List<String> children = zookeeper.getChildren(path, watcher);
             for (String childPath : children) {
                 byte[] data = zookeeper.getData(path + "/" + childPath, true, null);
                 Provider provider = JSON.parseObject(new String(data), Provider.class);
@@ -58,6 +58,12 @@ public class ZookeeperOperator {
         }
         return providers;
     }
+
+
+    public static List<Provider> findProvider(ZooKeeper zookeeper, String appName, String serviceName) {
+        return findProvider(zookeeper, appName, serviceName, null);
+    }
+
 
     public static void registryProvider(ZooKeeper zooKeeper, Provider provider) {
         try {

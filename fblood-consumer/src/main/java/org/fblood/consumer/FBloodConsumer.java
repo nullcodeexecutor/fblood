@@ -34,6 +34,7 @@ public class FBloodConsumer implements BeanPostProcessor {
             if (StringUtils.isBlank(serviceName)) {
                 serviceName = firstLetterToLowerCase(field.getName());
             }
+            ProviderHolder.initProvider(app.getApplication(), serviceName);
             Object proxy = ProxyUtil.getProxy(field.getType(), app.getApplication(), serviceName);
             ReflectionUtils.makeAccessible(field);
             ReflectionUtils.setField(field, o, proxy);
