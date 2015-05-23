@@ -76,7 +76,7 @@ public class ZookeeperOperator {
             if (null != stat) {
                 zooKeeper.delete(providerPath, stat.getVersion());
             }
-            zooKeeper.create(providerPath, JSON.toJSONString(provider).getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+            zooKeeper.create(providerPath, JSON.toJSONString(provider).getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
         } catch (KeeperException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

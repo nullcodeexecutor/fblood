@@ -13,6 +13,11 @@ public class ClientBootstrap {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/spring/*.xml");
         UserController controller = context.getBean(UserController.class);
         controller.save("wangyuantao");
+        try {
+            Thread.sleep(30 * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         controller.hello("world");
     }
 
