@@ -1,17 +1,11 @@
 ##fblood
 
 
-####1 Getting Started
-#####1.1 Introduction
-&nbsp;&nbsp;&nbsp;&nbsp;Fblood是一个基于注册中心的高可用的java分布式服务框架。Fblood基于spring，使用zookeeper作为注册中心，目前只支持rmi协议。
+#####Introduction
+&nbsp;&nbsp;&nbsp;&nbsp;Fblood是一个基于注册中心的java分布式服务框架。Fblood基于spring，使用zookeeper作为注册中心，目前只支持rmi协议。
 
-**目前Fblood处于开发阶段**
 
-| Date | Progress |
-|---------------+------------------|
-| 2015/05/14 | 基本打通各个模块，实现了远程服务功能 |
-
-#####1.2 Hello World
+#####Hello World
 &nbsp;&nbsp;&nbsp;&nbsp;Module ``fblood-demo-server`` 和 ``fblood-demo-client`` 分别是服务提供者和消费者的demo。<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;服务提供者的spring配置如下。
 
